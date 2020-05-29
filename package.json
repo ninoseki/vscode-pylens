@@ -1,10 +1,18 @@
 {
   "name": "vscode-pylens",
-  "displayName": "vscode-pylens",
+  "displayName": "pylens",
+  "icon": "images/logo.png",
   "description": "Shows the latest version of a dependency in pyproject.toml or requirements.txt",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ninoseki/vscode-pylens.git"
+  },
   "version": "0.0.1",
+  "author": "Manabu Niseki",
+  "publisher": "ninoseki",
+  "license": "MIT",
   "engines": {
-    "vscode": "^1.45.0"
+    "vscode": "^1.45.1"
   },
   "keywords": [
     "pyproject",
