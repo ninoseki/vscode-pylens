@@ -1,0 +1,28 @@
+import * as vscode from "vscode";
+
+import { AbstractProvider } from "./providers/abstractProvider";
+
+export function activate(context: vscode.ExtensionContext): void {
+  const pyprojectToml: vscode.DocumentFilter = {
+    pattern: "**/pyproject.toml",
+    scheme: "file",
+  };
+  context.subscriptions.push(
+    vscode.languages.registerHoverProvider(
+      pyprojectToml,
+      new AbstractProvider()
+    )
+  );
+
+  const requirements: vscode.DocumentFilter = {
+    pattern: "**/requirements.txt",
+    scheme: "file",
+  };
+  context.subscriptions.push(
+    vscode.languages.registerHoverProvider(requirements, new AbstractProvider())
+  );
+}
+
+export function deactivate(): void {
+  return;
+}
