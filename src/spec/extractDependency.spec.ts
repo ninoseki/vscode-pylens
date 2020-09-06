@@ -1,3 +1,4 @@
+/* eslint-disable jest/no-conditional-expect */
 import { extractDependency } from "../extractDependency";
 
 test("extractDependency", () => {
