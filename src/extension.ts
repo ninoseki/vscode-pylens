@@ -21,6 +21,28 @@ export function activate(context: vscode.ExtensionContext): void {
   context.subscriptions.push(
     vscode.languages.registerHoverProvider(requirements, new AbstractProvider())
   );
+
+  const requirementsEtc: vscode.DocumentFilter = {
+    pattern: "**/requirements-*.txt",
+    scheme: "file",
+  };
+  context.subscriptions.push(
+    vscode.languages.registerHoverProvider(
+      requirementsEtc,
+      new AbstractProvider()
+    )
+  );
+
+  const requirementsSubDirectory: vscode.DocumentFilter = {
+    pattern: "**/requirements/*.txt",
+    scheme: "file",
+  };
+  context.subscriptions.push(
+    vscode.languages.registerHoverProvider(
+      requirementsSubDirectory,
+      new AbstractProvider()
+    )
+  );
 }
 
 export function deactivate(): void {
