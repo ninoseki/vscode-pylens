@@ -1,8 +1,19 @@
-import { packageNameRegexp, packageRequirementsRegexp } from "./common";
+import {
+  bracketsRegexp,
+  packageNameRegexp,
+  packageRequirementsRegexp,
+} from "./common";
 import { Dependency } from "./types";
 
 function isDependecy(line: string): boolean {
   return packageNameRegexp.test(line) && packageRequirementsRegexp.test(line);
+}
+
+function normalize(name: string): string {
+  if (bracketsRegexp.test(name)) {
+    return name.split("[")[0];
+  }
+  return name;
 }
 
 export function extractDependency(line: string): Dependency | undefined {
@@ -21,7 +32,7 @@ export function extractDependency(line: string): Dependency | undefined {
     return undefined;
   }
 
-  const name = packageName[1];
+  const name = normalize(packageName[1]);
   const requirements = packageRequirements[1];
 
   return { name, requirements };

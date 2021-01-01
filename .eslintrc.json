@@ -23,6 +23,7 @@
     "eqeqeq": "warn",
     "no-throw-literal": "warn",
     "semi": "off",
-    "simple-import-sort/sort": "error"
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error"
   }
 }
