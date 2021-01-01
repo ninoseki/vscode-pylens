@@ -33,4 +33,20 @@ test("extractDependency", () => {
     expect(dependency.name).toEqual("pre-commit");
     expect(dependency.requirements).toEqual("2.2.0");
   }
+
+  line = 'uvicorn[standard] = "^2.2.0"';
+  dependency = extractDependency(line);
+  expect(dependency).toBeDefined();
+  if (dependency) {
+    expect(dependency.name).toEqual("uvicorn[standard]");
+    expect(dependency.requirements).toEqual("2.2.0");
+  }
+
+  line = 'uvicorn = {extras = ["standard"], version = "^0.13.3"}';
+  dependency = extractDependency(line);
+  expect(dependency).toBeDefined();
+  if (dependency) {
+    expect(dependency.name).toEqual("uvicorn");
+    expect(dependency.requirements).toEqual("0.13.3");
+  }
 });
