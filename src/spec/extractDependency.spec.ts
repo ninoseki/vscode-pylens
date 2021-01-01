@@ -38,7 +38,7 @@ test("extractDependency", () => {
   dependency = extractDependency(line);
   expect(dependency).toBeDefined();
   if (dependency) {
-    expect(dependency.name).toEqual("uvicorn[standard]");
+    expect(dependency.name).toEqual("uvicorn");
     expect(dependency.requirements).toEqual("2.2.0");
   }
 
