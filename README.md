@@ -1,6 +1,6 @@
 # vscode-pylens
 
-[![Build Status](https://travis-ci.com/ninoseki/vscode-pylens.svg?branch=master)](https://travis-ci.com/ninoseki/vscode-pylens)
+![Node.js CI](https://github.com/ninoseki/vscode-pylens/workflows/Node.js%20CI/badge.svg)
 [![Coverage Status](https://coveralls.io/repos/github/ninoseki/vscode-pylens/badge.svg?branch=master)](https://coveralls.io/github/ninoseki/vscode-pylens?branch=master)
 [![CodeFactor](https://www.codefactor.io/repository/github/ninoseki/vscode-pylens/badge)](https://www.codefactor.io/repository/github/ninoseki/vscode-pylens)
 
