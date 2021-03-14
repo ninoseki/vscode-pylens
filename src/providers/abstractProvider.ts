@@ -1,16 +1,15 @@
 import * as vscode from "vscode";
 
-import { cache } from "../common";
 import { dependencyRegexp } from "../common";
 import { extractDependency } from "../extractDependency";
-import { getPackageInfomation } from "../package";
+import { getPackageInformation } from "../package";
 import { Info } from "../types";
 
 export class AbstractProvider implements vscode.HoverProvider {
   public async provideHover(
     document: vscode.TextDocument,
     position: vscode.Position,
-    token: vscode.CancellationToken
+    _token: vscode.CancellationToken
   ): Promise<vscode.Hover | undefined> {
     const range = document.getWordRangeAtPosition(position, dependencyRegexp);
     const line = document.lineAt(position.line).text.trim();
@@ -20,14 +19,7 @@ export class AbstractProvider implements vscode.HoverProvider {
       return;
     }
 
-    if (!cache.has(dependency.name)) {
-      const info = await getPackageInfomation(dependency.name);
-      if (info !== undefined) {
-        cache.set(dependency.name, info);
-      }
-    }
-
-    const info = cache.get(dependency.name);
+    const info = await getPackageInformation(dependency.name);
     if (info === undefined) {
       return;
     }
