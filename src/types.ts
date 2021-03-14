@@ -30,5 +30,3 @@ export interface Tool {
 export interface Project {
   tool: Tool;
 }
-
-export type Cache = Map<string, Info>;

@@ -17,6 +17,7 @@ describe("Pyproject", () => {
       aiomysql: "^0.0.20",
       "yara-python": "^4.0.0",
     });
+
     expect(pyproject.project.tool.poetry.devDependencies).toEqual({
       autoflake: "^1.3.1",
     });

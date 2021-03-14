@@ -1,12 +1,16 @@
-import axios from "axios";
+import { setup } from "axios-cache-adapter";
 
 import { Info, Package } from "./types";
 
-export async function getPackageInfomation(
+const api = setup({
+  baseURL: "https://pypi.org",
+});
+
+export async function getPackageInformation(
   name: string
 ): Promise<Info | undefined> {
-  const url = `https://pypi.org/pypi/${name}/json`;
-  const res = await axios.get<Package>(url);
+  const path = `/pypi/${name}/json`;
+  const res = await api.get<Package>(path);
   if (res.status === 200) {
     const package_ = res.data;
     return package_.info;

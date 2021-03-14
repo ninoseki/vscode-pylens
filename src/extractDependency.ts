@@ -5,7 +5,7 @@ import {
 } from "./common";
 import { Dependency } from "./types";
 
-function isDependecy(line: string): boolean {
+function isDependency(line: string): boolean {
   return packageNameRegexp.test(line) && packageRequirementsRegexp.test(line);
 }
 
@@ -17,7 +17,7 @@ function normalize(name: string): string {
 }
 
 export function extractDependency(line: string): Dependency | undefined {
-  if (!isDependecy(line.trim())) {
+  if (!isDependency(line.trim())) {
     return undefined;
   }
 
