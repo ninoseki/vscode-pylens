@@ -38,28 +38,28 @@
     "format": "prettier --write src/*.ts src/**/*.ts"
   },
   "devDependencies": {
-    "@types/jest": "26.0.22",
-    "@types/node": "14.14.37",
-    "@types/vscode": "1.55.0",
-    "@typescript-eslint/eslint-plugin": "4.21.0",
-    "@typescript-eslint/parser": "4.21.0",
-    "coveralls": "3.1.0",
-    "eslint": "7.23.0",
-    "eslint-config-prettier": "8.1.0",
-    "eslint-plugin-jest": "24.3.4",
-    "eslint-plugin-prettier": "3.3.1",
+    "@types/jest": "26.0.24",
+    "@types/node": "16.3.3",
+    "@types/vscode": "1.58.1",
+    "@typescript-eslint/eslint-plugin": "4.28.3",
+    "@typescript-eslint/parser": "4.28.3",
+    "coveralls": "3.1.1",
+    "eslint": "7.30.0",
+    "eslint-config-prettier": "8.3.0",
+    "eslint-plugin-jest": "24.3.6",
+    "eslint-plugin-prettier": "3.4.0",
     "eslint-plugin-simple-import-sort": "7.0.0",
-    "jest": "26.6.3",
-    "prettier": "2.2.1",
-    "ts-jest": "26.5.4",
-    "typescript": "4.2.3",
-    "vscode-test": "1.5.2"
+    "jest": "27.0.6",
+    "prettier": "2.3.2",
+    "ts-jest": "27.0.3",
+    "typescript": "4.3.5",
+    "vscode-test": "1.6.1"
   },
   "dependencies": {
     "@sgarciac/bombadil": "^2.3.0",
     "axios": "^0.21.1",
     "axios-cache-adapter": "^2.7.3",
-    "camelcase-keys": "^6.2.2",
+    "camelcase-keys": "^7.0.0",
     "toml": "^3.0.0"
   }
 }
