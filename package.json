@@ -57,7 +57,7 @@
   },
   "dependencies": {
     "@sgarciac/bombadil": "^2.3.0",
-    "axios": "^0.21.1",
+    "axios": "^0.21.2",
     "axios-cache-adapter": "^2.7.3",
     "camelcase-keys": "^7.0.0",
     "toml": "^3.0.0"
