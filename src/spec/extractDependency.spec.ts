@@ -10,6 +10,16 @@ test("isDependency", () => {
   expect(isDependency("foo==0.9")).toEqual(true);
   expect(isDependency("foo>=0.9")).toEqual(true);
   expect(isDependency('foo = "^0.66.0"')).toEqual(true);
+
+  expect(isDependency("foo~=0.961")).toEqual(true);
+  expect(isDependency("foo!=0.961")).toEqual(true);
+  expect(isDependency("foo<=0.961")).toEqual(true);
+  expect(isDependency("foo<0.961")).toEqual(true);
+
+  expect(isDependency("foo ~= 0.961")).toEqual(true);
+  expect(isDependency("foo != 0.961")).toEqual(true);
+  expect(isDependency("foo <= 0.961")).toEqual(true);
+  expect(isDependency("foo < 0.961 ")).toEqual(true);
 });
 
 test("hasDoubleQuotedString", () => {
@@ -23,60 +33,22 @@ test("extractDoubleQuotedString", () => {
   expect(extractQuotedString("'autoflake==1.3.1'")).toEqual("autoflake==1.3.1");
 });
 
-test("extractDependency", () => {
-  let line = 'autoflake = "^1.3.1"';
-  let dependency = extractDependency(line);
+test.each([
+  ['foo = "^1.0.0"', "foo", "1.0.0"],
+  ["foo = 1.0.0", "foo", "1.0.0"],
+  ["foo == 1.0.0", "foo", "1.0.0"],
+  ["foo ~= 1.0.0", "foo", "1.0.0"],
+  ["foo != 1.0.0", "foo", "1.0.0"],
+  ["foo <= 1.0.0", "foo", "1.0.0"],
+  ["foo < 1.0.0", "foo", "1.0.0"],
+  ["foo[extra] == 1.0.0", "foo", "1.0.0"],
+  ['foo = {extras = ["extra"], version = "^1.0.0"}', "foo", "1.0.0"],
+  ['  "foo==1.0.0", ', "foo", "1.0.0"],
+])("extractDependency", (line, name, requirements) => {
+  const dependency = extractDependency(line);
   expect(dependency).toBeDefined();
   if (dependency) {
-    expect(dependency.name).toEqual("autoflake");
-    expect(dependency.requirements).toEqual("1.3.1");
-  }
-
-  line = "autoflake = 1.3.1";
-  dependency = extractDependency(line);
-  expect(dependency).toBeDefined();
-  if (dependency) {
-    expect(dependency.name).toEqual("autoflake");
-    expect(dependency.requirements).toEqual("1.3.1");
-  }
-
-  line = "autoflake==1.3.1";
-  dependency = extractDependency(line);
-  expect(dependency).toBeDefined();
-  if (dependency) {
-    expect(dependency.name).toEqual("autoflake");
-    expect(dependency.requirements).toEqual("1.3.1");
-  }
-
-  line = 'pre-commit = "^2.2.0"';
-  dependency = extractDependency(line);
-  expect(dependency).toBeDefined();
-  if (dependency) {
-    expect(dependency.name).toEqual("pre-commit");
-    expect(dependency.requirements).toEqual("2.2.0");
-  }
-
-  line = 'uvicorn[standard] = "^2.2.0"';
-  dependency = extractDependency(line);
-  expect(dependency).toBeDefined();
-  if (dependency) {
-    expect(dependency.name).toEqual("uvicorn");
-    expect(dependency.requirements).toEqual("2.2.0");
-  }
-
-  line = 'uvicorn = {extras = ["standard"], version = "^0.13.3"}';
-  dependency = extractDependency(line);
-  expect(dependency).toBeDefined();
-  if (dependency) {
-    expect(dependency.name).toEqual("uvicorn");
-    expect(dependency.requirements).toEqual("0.13.3");
-  }
-
-  line = '  "autoflake==1.3.1", ';
-  dependency = extractDependency(line);
-  expect(dependency).toBeDefined();
-  if (dependency) {
-    expect(dependency.name).toEqual("autoflake");
-    expect(dependency.requirements).toEqual("1.3.1");
+    expect(dependency.name).toEqual(name);
+    expect(dependency.requirements).toEqual(requirements);
   }
 });
