@@ -1,4 +1,4 @@
-import * as camelcaseKeys from "camelcase-keys";
+import camelcaseKeys from "camelcase-keys";
 import * as toml from "toml";
 
 import { Project } from "./types";
