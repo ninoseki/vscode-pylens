@@ -9,6 +9,7 @@ export class AbstractProvider implements vscode.HoverProvider {
   public async provideHover(
     document: vscode.TextDocument,
     position: vscode.Position,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     _token: vscode.CancellationToken
   ): Promise<vscode.Hover | undefined> {
     const range = document.getWordRangeAtPosition(position, dependencyRegexp);
