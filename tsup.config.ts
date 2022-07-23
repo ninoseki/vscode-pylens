@@ -6,4 +6,5 @@ export default defineConfig({
   shims: false,
   dts: false,
   external: ["vscode"],
+  noExternal: ["axios-cache-interceptor", "axios", "camelcase-keys", "toml"],
 });
