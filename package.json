@@ -6,7 +6,7 @@
     "type": "git",
     "url": "https://github.com/ninoseki/vscode-pylens.git"
   },
-  "version": "0.1.2",
+  "version": "0.1.4",
   "author": "Manabu Niseki",
   "publisher": "ninoseki",
   "license": "MIT",
