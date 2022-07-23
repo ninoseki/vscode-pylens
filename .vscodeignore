@@ -1,7 +1,5 @@
 .vscode/**
 .vscode-test/**
-out/spec/**
-out/test/**
 src/**
 .gitignore
 **/tsconfig.json
@@ -12,3 +10,5 @@ src/**
 screenshots/**
 coverage/**
 renovate.json
+jest.config.js
+**/node_modules/**

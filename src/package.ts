@@ -1,10 +1,12 @@
-import { setup } from "axios-cache-adapter";
+import Axios from "axios";
+import { setupCache } from "axios-cache-interceptor";
 
 import { Info, Package } from "./types";
 
-const api = setup({
+const api = Axios.create({
   baseURL: "https://pypi.org",
 });
+setupCache(api);
 
 export async function getPackageInformation(
   name: string

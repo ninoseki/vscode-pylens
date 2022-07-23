@@ -6,7 +6,7 @@
     "type": "git",
     "url": "https://github.com/ninoseki/vscode-pylens.git"
   },
-  "version": "0.1.2",
+  "version": "0.1.4",
   "author": "Manabu Niseki",
   "publisher": "ninoseki",
   "license": "MIT",
@@ -31,13 +31,14 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup src/extension.ts --external vscode",
+    "build": "tsup",
     "lint": "eslint src --ext ts",
     "dev": "npm run build --watch",
     "test": "jest",
     "coverage": "jest --coverage && cat ./coverage/lcov.info",
-    "publish": "vsce publish --no-dependencies",
-    "pack": "vsce package --no-dependencies"
+    "vscode:prepublish": "npm run build",
+    "publish": "vsce publish",
+    "pack": "vsce package"
   },
   "devDependencies": {
     "@types/jest": "28.1.6",
@@ -59,9 +60,8 @@
     "vscode-test": "1.6.1"
   },
   "dependencies": {
-    "@sgarciac/bombadil": "^2.3.0",
-    "axios": "^0.21.2",
-    "axios-cache-adapter": "^2.7.3",
+    "axios": "^0.27.2",
+    "axios-cache-interceptor": "^0.10.6",
     "camelcase-keys": "^7.0.2",
     "toml": "^3.0.0"
   }
