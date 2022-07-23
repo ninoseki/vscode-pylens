@@ -60,9 +60,8 @@
     "vscode-test": "1.6.1"
   },
   "dependencies": {
-    "@sgarciac/bombadil": "^2.3.0",
-    "axios": "^0.21.2",
-    "axios-cache-adapter": "^2.7.3",
+    "axios": "^0.27.2",
+    "axios-cache-interceptor": "^0.10.6",
     "camelcase-keys": "^7.0.2",
     "toml": "^3.0.0"
   }
