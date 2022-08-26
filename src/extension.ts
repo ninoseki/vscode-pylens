@@ -33,6 +33,17 @@ export function activate(context: vscode.ExtensionContext): void {
     )
   );
 
+  const requirementsEtc2: vscode.DocumentFilter = {
+    pattern: "**/*-requirements.txt",
+    scheme: "file",
+  };
+  context.subscriptions.push(
+    vscode.languages.registerHoverProvider(
+      requirementsEtc2,
+      new AbstractProvider()
+    )
+  );
+
   const requirementsSubDirectory: vscode.DocumentFilter = {
     pattern: "**/requirements/*.txt",
     scheme: "file",
