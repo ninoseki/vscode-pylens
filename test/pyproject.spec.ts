@@ -1,4 +1,4 @@
-import { Pyproject } from "../pyproject";
+import { Pyproject } from "@/pyproject";
 
 const source = `
 [tool.poetry.dependencies]
