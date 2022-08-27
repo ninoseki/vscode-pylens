@@ -1,4 +1,4 @@
-import { getPackageInformation } from "../package";
+import { getPackageInformation } from "@/package";
 
 test("getPackageInformation", async () => {
   const information = await getPackageInformation("urllib3");
