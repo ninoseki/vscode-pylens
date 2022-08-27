@@ -11,7 +11,7 @@
   "publisher": "ninoseki",
   "license": "MIT",
   "engines": {
-    "vscode": "^1.69.0"
+    "vscode": "^1.70.0"
   },
   "keywords": [
     "pyproject",
