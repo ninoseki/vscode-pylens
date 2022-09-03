@@ -20,6 +20,10 @@ export function activate(context: vscode.ExtensionContext): void {
       pattern: "**/requirements/*.txt",
       scheme: "file",
     },
+    {
+      pattern: "**/*-requirements.txt",
+      scheme: "file",
+    },
   ];
   const provider = new AbstractProvider();
 
