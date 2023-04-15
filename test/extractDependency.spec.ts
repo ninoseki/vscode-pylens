@@ -6,31 +6,35 @@ import {
   isDependency,
 } from "@/extractDependency";
 
-test("isDependency", () => {
-  expect(isDependency("foo==0.9")).toEqual(true);
-  expect(isDependency("foo>=0.9")).toEqual(true);
-  expect(isDependency('foo = "^0.66.0"')).toEqual(true);
-
-  expect(isDependency("foo~=0.961")).toEqual(true);
-  expect(isDependency("foo!=0.961")).toEqual(true);
-  expect(isDependency("foo<=0.961")).toEqual(true);
-  expect(isDependency("foo<0.961")).toEqual(true);
-
-  expect(isDependency("foo ~= 0.961")).toEqual(true);
-  expect(isDependency("foo != 0.961")).toEqual(true);
-  expect(isDependency("foo <= 0.961")).toEqual(true);
-  expect(isDependency("foo < 0.961 ")).toEqual(true);
+test.each([
+  ["foo==0.9", true],
+  ["foo>=0.9", true],
+  ['foo = "^0.66.0"', true],
+  ["foo~=0.961", true],
+  ["foo!=0.961", true],
+  ["foo<=0.961", true],
+  ["foo<0.961", true],
+  ["foo ~= 0.961", true],
+  ["foo != 0.961", true],
+  ["foo <= 0.961", true],
+  ["foo < 0.961 ", true],
+])("hasQuotedString", (line, expected) => {
+  expect(isDependency(line)).toEqual(expected);
 });
 
-test("hasDoubleQuotedString", () => {
-  expect(hasQuotedString('"foo"')).toEqual(true);
-  expect(hasQuotedString("'foo'")).toEqual(true);
-  expect(hasQuotedString("foo")).toEqual(false);
+test.each([
+  ['"foo"', true],
+  ["'foo'", true],
+  ["foo", false],
+])("hasQuotedString", (line, expected) => {
+  expect(hasQuotedString(line)).toEqual(expected);
 });
 
-test("extractDoubleQuotedString", () => {
-  expect(extractQuotedString('"autoflake==1.3.1"')).toEqual("autoflake==1.3.1");
-  expect(extractQuotedString("'autoflake==1.3.1'")).toEqual("autoflake==1.3.1");
+test.each([
+  ['"autoflake==1.3.1"', "autoflake==1.3.1"],
+  ["'autoflake==1.3.1'", "autoflake==1.3.1"],
+])("extractDoubleQuotedString", (line, expected) => {
+  expect(extractQuotedString(line)).toEqual(expected);
 });
 
 test.each([
