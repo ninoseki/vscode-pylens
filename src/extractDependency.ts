@@ -3,8 +3,8 @@ import {
   packageNameRegexp,
   packageRequirementsRegexp,
   quotedStringRegexp,
-} from "./common";
-import { Dependency } from "./types";
+} from "@/common";
+import { Dependency } from "@/types";
 
 export function isDependency(line: string): boolean {
   return packageNameRegexp.test(line) && packageRequirementsRegexp.test(line);

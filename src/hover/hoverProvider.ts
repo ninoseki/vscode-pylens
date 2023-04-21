@@ -1,11 +1,11 @@
 import * as vscode from "vscode";
 
-import { dependencyRegexp } from "../common";
-import { extractDependency } from "../extractDependency";
-import { getPackageInformation } from "../package";
-import { Info } from "../types";
+import { dependencyRegexp } from "@/common";
+import { extractDependency } from "@/extractDependency";
+import { getPackage } from "@/package";
+import { Package } from "@/types";
 
-export class AbstractProvider implements vscode.HoverProvider {
+export class HoverProvider implements vscode.HoverProvider {
   public async provideHover(
     document: vscode.TextDocument,
     position: vscode.Position,
@@ -20,17 +20,17 @@ export class AbstractProvider implements vscode.HoverProvider {
       return;
     }
 
-    const info = await getPackageInformation(dependency.name);
-    if (info === undefined) {
+    const pkg = await getPackage(dependency.name);
+    if (!pkg) {
       return;
     }
 
-    const message = this.buildMessage(info);
+    const message = this.buildMessage(pkg);
     const link = new vscode.Hover(message, range);
     return link;
   }
 
-  public buildMessage(info: Info): string {
-    return `${info.summary}\n\nLatest version: ${info.version}\n\n${info.home_page}`;
+  public buildMessage(pkg: Package): string {
+    return `${pkg.info.summary}\n\nLatest version: ${pkg.info.version}\n\n${pkg.info.home_page}`;
   }
 }
