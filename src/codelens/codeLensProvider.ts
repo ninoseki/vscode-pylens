@@ -1,9 +1,9 @@
-import { getDependenciesFrom } from "snyk-poetry-lockfile-parser/dist/manifest-parser";
 import * as vscode from "vscode";
 
 import { dependencyRegexp } from "@/common";
 import { ENABLE_CODE_LENS_KEY, EXT_ID } from "@/constants";
 import { extractDependency } from "@/extractDependency";
+import { getDependenciesFrom } from "@/manifestParser";
 import { getPackage } from "@/package";
 import { SuggestionProvider } from "@/suggestion/suggestionProvider";
 

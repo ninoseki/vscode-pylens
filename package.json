@@ -6,7 +6,7 @@
     "type": "git",
     "url": "https://github.com/ninoseki/vscode-pylens.git"
   },
-  "version": "0.2.0",
+  "version": "0.2.1",
   "author": "Manabu Niseki",
   "publisher": "ninoseki",
   "license": "MIT",
@@ -80,11 +80,9 @@
     "vscode-test": "1.6.1"
   },
   "dependencies": {
+    "@iarna/toml": "^2.2.5",
     "axios": "^1.3.6",
     "axios-cache-interceptor": "^1.0.1",
-    "camelcase-keys": "^7.0.2",
-    "semver": "^7.5.0",
-    "snyk-poetry-lockfile-parser": "^1.2.0",
-    "toml": "^3.0.0"
+    "semver": "^7.5.0"
   }
 }
