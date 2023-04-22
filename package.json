@@ -6,7 +6,7 @@
     "type": "git",
     "url": "https://github.com/ninoseki/vscode-pylens.git"
   },
-  "version": "0.2.1",
+  "version": "0.2.3",
   "author": "Manabu Niseki",
   "publisher": "ninoseki",
   "license": "MIT",
@@ -61,6 +61,7 @@
     "pack": "vsce package"
   },
   "devDependencies": {
+    "@types/iarna__toml": "^2.0.2",
     "@types/jest": "29.5.1",
     "@types/node": "18.15.13",
     "@types/vscode": "^1.77.0",
