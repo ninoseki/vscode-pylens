@@ -31,6 +31,14 @@ export class HoverProvider implements vscode.HoverProvider {
   }
 
   public buildMessage(pkg: Package): string {
-    return `${pkg.info.summary}\n\nLatest version: ${pkg.info.version}\n\n${pkg.info.home_page}`;
+    const { summary, home_page, project_url, version, project_urls } = pkg.info;
+    let pkg_url = home_page;
+    if (!pkg_url && project_urls?.Homepage) {
+      pkg_url = project_urls.Homepage;
+    }
+    if (!pkg_url) {
+      pkg_url = project_url;
+    }
+    return `${summary}\n\nLatest version: ${version}\n\n${pkg_url}`;
   }
 }
