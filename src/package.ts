@@ -23,3 +23,21 @@ export async function getPackage(name: string): Promise<Package | undefined> {
 
   return undefined;
 }
+
+export function buildHoverMessage(pkg: Package): string {
+  const url = (() => {
+    // Select URL to display by following the order
+    // - home_page
+    // - project_url
+    // - package_url
+    if (pkg.info.home_page !== "") {
+      return pkg.info.home_page;
+    }
+    if (pkg.info.project_url !== "") {
+      return pkg.info.project_url;
+    }
+    return pkg.info.package_url;
+  })();
+
+  return `${pkg.info.summary}\n\nLatest version: ${pkg.info.version}\n\n${url}`;
+}
