@@ -2,8 +2,7 @@ import * as vscode from "vscode";
 
 import { dependencyRegexp } from "@/common";
 import { extractDependency } from "@/extractDependency";
-import { getPackage } from "@/package";
-import { Package } from "@/types";
+import { buildHoverMessage, getPackage } from "@/package";
 
 export class HoverProvider implements vscode.HoverProvider {
   public async provideHover(
@@ -25,12 +24,8 @@ export class HoverProvider implements vscode.HoverProvider {
       return;
     }
 
-    const message = this.buildMessage(pkg);
+    const message = buildHoverMessage(pkg);
     const link = new vscode.Hover(message, range);
     return link;
-  }
-
-  public buildMessage(pkg: Package): string {
-    return `${pkg.info.summary}\n\nLatest version: ${pkg.info.version}\n\n${pkg.info.home_page}`;
   }
 }

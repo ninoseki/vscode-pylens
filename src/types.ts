@@ -2,6 +2,8 @@ export interface Info {
   name: string;
   summary: string;
   home_page: string;
+  package_url: string;
+  project_url: string;
   version: string;
 }
 
